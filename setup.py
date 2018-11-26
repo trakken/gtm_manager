@@ -58,9 +58,3 @@ setup(
         "docs": ["sphinx >= 1.8.2", "sphinx_rtd_theme"],
     },
 )
-
--"3.7-dev"
--"3.6"
--"3.5"
--"pypy3.5"
-
