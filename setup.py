@@ -34,7 +34,9 @@ def find_version(*file_paths):
 setup(
     name="gtm-manager",
     version=find_version("gtm_manager", "__init__.py"),
-    description="Google Tag Manager utility library",
+    description="An object-oriented helper library wrapping the Tag Manager API Client Library for Python.",
+    long_description=read("README.md"),
+    long_description_content_type="text/markdown",
     packages=["gtm_manager"],
     author="Trakken Web Services",
     author_email="christian@trakken.de",
@@ -49,4 +51,8 @@ setup(
     .splitlines(),
     keywords=["gtm", "google tag manager"],
     install_requires=DEPENDENCIES,
+    extras_require={
+        "tests": ["pytest"],
+        "docs": ["sphinx >= 1.8.2", "sphinx_rtd_theme"],
+    },
 )
