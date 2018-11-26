@@ -1,12 +1,17 @@
 # GTM Manager (WIP)
 
+![Build Status](https://img.shields.io/pypi/pyversions/gtm-manager.svg)
 [![Build Status](https://travis-ci.org/trakken/gtm_manager.svg?branch=master)](https://travis-ci.org/trakken/gtm_manager)
 [![Documentation Status](https://img.shields.io/pypi/v/gtm-manager.svg)](https://pypi.org/project/gtm-manager/)
 [![Documentation Status](https://readthedocs.org/projects/gtm-manager/badge/?version=latest)](https://gtm-manager.readthedocs.io/en/latest/?badge=latest)
 
-An object-oriented helper library wrapping the [Tag Manager API Client Library for Python]("https://developers.google.com/api-client-library/python/apis/tagmanager/v2") for the [Google Tag Manager API]("https://developers.google.com/tag-manager/api/v2/").
+An object-oriented helper library wrapping the [Tag Manager API Client Library for Python](https://developers.google.com/api-client-library/python/apis/tagmanager/v2) for the [Google Tag Manager API](https://developers.google.com/tag-manager/api/v2/).
 
-[Documentation]("https://gtm-manager.readthedocs.io/en/latest/index.html")
+```bash
+pip3 install gtm_manager
+```
+
+Documentation: [https://gtm-manager.readthedocs.io](https://gtm-manager.readthedocs.io/en/latest)
 
 ## Installation from Source
 
@@ -36,7 +41,7 @@ When using any of the classes from the resources that require loading data from 
 
 ### Client Secrets
 
-The Google OAuth flows requires you to provide a [client id and secret]("https://developers.google.com/api-client-library/python/guide/aaa_client_secrets") in the from of a `JSON` file. You can create these in any Google Cloud or Google Developer project:
+The Google OAuth flows requires you to provide a [client id and secret](https://developers.google.com/api-client-library/python/guide/aaa_client_secrets) in the from of a `JSON` file. You can create these in any Google Cloud or Google Developer project:
 
 > 1. Open the Google API Console Credentials page.
 > 2. From the project drop-down, choose Create a new project, enter a name for the project, and optionally, edit the provided Project ID. Click Create.
@@ -66,7 +71,7 @@ gtm_manager.CREDENTIALS_FILE_NAME = "my_auth_credentials.json"
 
 ### Scopes
 
-The Google OAuth system uses scopes to request different types of account access from a user. The Google Tag Manager API uses seven different scopes. Different API methods requires different scopes. Details can be found in the [Google Tag Manager API Reference]("https://developers.google.com/tag-manager/api/v2/"). After initial authorisation, the stored credentials can not extend or chang their scope.
+The Google OAuth system uses scopes to request different types of account access from a user. The Google Tag Manager API uses seven different scopes. Different API methods requires different scopes. Details can be found in the [Google Tag Manager API Reference](https://developers.google.com/tag-manager/api/v2/). After initial authorisation, the stored credentials can not extend or chang their scope.
 
 By default, the `gtm_manager` will request all seven scopes from a user during the auth flow. For ease of use, all scopes are defined as constants under `gtm_manager.GoogleTagManagerScopes`.
 

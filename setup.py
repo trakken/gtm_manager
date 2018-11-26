@@ -42,7 +42,9 @@ setup(
     author_email="christian@trakken.de",
     classifiers=textwrap.dedent(
         """
-        Development Status :: 3 - Alpha
+        Development Status :: 4 - Beta
+        Programming Language :: Python :: 3.5
+        Programming Language :: Python :: 3.6
         Programming Language :: Python :: 3.7
         License :: OSI Approved :: MIT License
     """
@@ -56,3 +58,9 @@ setup(
         "docs": ["sphinx >= 1.8.2", "sphinx_rtd_theme"],
     },
 )
+
+-"3.7-dev"
+-"3.6"
+-"3.5"
+-"pypy3.5"
+
