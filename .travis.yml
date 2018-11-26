@@ -3,7 +3,13 @@ language: python
 python: 
 - "3.7-dev"
 - "3.6"
-cache: pip
+- "3.5"
+- "3.4"
+- "pypy3.5"
+cache: 
+  pip: true
+  directories:
+  - .tox
 install:
 - pip install --disable-pip-version-check --upgrade pip setuptools wheel
 - pip install --upgrade tox tox-travis tox-venv
@@ -18,3 +24,4 @@ deploy:
     tags: true
   distributions: "sdist bdist_wheel"
   skip_existing: true
+  repo: trakken/gtm_manager
