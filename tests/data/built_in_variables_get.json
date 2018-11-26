@@ -1,0 +1,20 @@
+{
+  "builtInVariable": [
+    {
+      "path": "accounts/1234/containers/1234/workspaces/1/built_in_variables",
+      "accountId": "1234",
+      "containerId": "1234",
+      "workspaceId": "1",
+      "type": "clickId",
+      "name": "Click ID"
+    },
+    {
+      "path": "accounts/1234/containers/1234/workspaces/1/built_in_variables",
+      "accountId": "1234",
+      "containerId": "1234",
+      "workspaceId": "1",
+      "type": "clickText",
+      "name": "Click Text"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "trigger": [
+    {
+      "path": "accounts/1234/containers/1234/workspaces/1/triggers/12",
+      "accountId": "1234",
+      "containerId": "1234",
+      "workspaceId": "1",
+      "triggerId": "12",
+      "name": "Trigger 1",
+      "type": "linkClick",
+      "filter": [
+        {
+          "type": "matchRegex",
+          "parameter": [
+            {
+              "type": "template",
+              "key": "arg0",
+              "value": "{{Click URL}}"
+            },
+            {
+              "type": "template",
+              "key": "arg1",
+              "value": "pdf"
+            },
+            {
+              "type": "boolean",
+              "key": "ignore_case",
+              "value": "true"
+            }
+          ]
+        }
+      ],
+      "waitForTags": {
+        "type": "template"
+      },
+      "checkValidation": {
+        "type": "template"
+      },
+      "waitForTagsTimeout": {
+        "type": "template"
+      },
+      "uniqueTriggerId": {
+        "type": "template"
+      },
+      "fingerprint": "1543077157587",
+      "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/1234/containers/1234/workspaces/1/triggers/12?apiLink=trigger"
+    }
+  ]
+}

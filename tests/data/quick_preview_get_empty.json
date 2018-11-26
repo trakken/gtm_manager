@@ -1,0 +1,25 @@
+{
+  "containerVersion": {
+    "path": "accounts/1234/containers/1234/versions/0",
+    "accountId": "1234",
+    "containerId": "1234",
+    "containerVersionId": "0",
+    "container": {
+      "path": "accounts/1234/containers/1234",
+      "accountId": "1234",
+      "containerId": "1234",
+      "name": "Container 1",
+      "publicId": "GTM-XXXX",
+      "usageContext": ["web"],
+      "fingerprint": "1541435230049",
+      "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/1234/containers/1234/workspaces?apiLink=container"
+    },
+    "tag": [],
+    "trigger": [],
+    "variable": [],
+    "folder": [],
+    "builtInVariable": [],
+    "fingerprint": "1543070067553",
+    "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/1234/containers/1234/versions/0?apiLink=version"
+  }
+}

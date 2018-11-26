@@ -1,0 +1,12 @@
+{
+  "path": "accounts/12345/containers/12345",
+  "accountId": "12345",
+  "containerId": "12345",
+  "name": "Container 1",
+  "publicId": "GTM-PB2KTV4",
+  "usageContext": ["web"],
+  "notes": "notes string",
+  "domainName": ["asdf"],
+  "fingerprint": "1534194925261",
+  "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/12345/containers/12345/workspaces?apiLink=container"
+}

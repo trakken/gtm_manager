@@ -1,0 +1,10 @@
+{
+   "path": "accounts/1234/containers/1234/workspaces/1",
+   "accountId": "1234",
+   "containerId": "1234",
+   "workspaceId": "1",
+   "name": "Workspace 1",
+   "fingerprint": "1538398661230",
+   "description": "Workspace Description",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/1234/containers/1234/workspaces/1?apiLink=workspace"
+  }

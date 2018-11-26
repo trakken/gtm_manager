@@ -1,0 +1,24 @@
+{
+  "container": [
+    {
+      "path": "accounts/12345/containers/12345",
+      "accountId": "12345",
+      "containerId": "12345",
+      "name": "Container 1",
+      "publicId": "GTM-PB2KTV4",
+      "usageContext": ["web"],
+      "fingerprint": "1534194925261",
+      "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/12345/containers/12345/workspaces?apiLink=container"
+    },
+    {
+      "path": "accounts/123456/containers/123456",
+      "accountId": "123456",
+      "containerId": "123456",
+      "name": "Container 2",
+      "publicId": "GTM-WC3LXW9",
+      "usageContext": ["web"],
+      "fingerprint": "1534662152718",
+      "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/123456/containers/123456/workspaces?apiLink=container"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "containerVersion": {
+    "path": "accounts/1234/containers/1234/versions/3",
+    "accountId": "1234",
+    "containerId": "1234",
+    "containerVersionId": "3",
+    "name": "Version 1",
+    "description": "Version Notes",
+    "container": {
+      "path": "accounts/1234/containers/1234",
+      "accountId": "1234",
+      "containerId": "1234",
+      "name": "Demos",
+      "publicId": "GTM-W28MLKN",
+      "usageContext": ["web"],
+      "fingerprint": "1543132241025",
+      "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/1234/containers/1234/workspaces?apiLink=container"
+    },
+    "tag": [
+      {
+        "accountId": "1234",
+        "containerId": "1234",
+        "tagId": "2",
+        "name": "Tag 1",
+        "type": "html",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "html",
+            "value": "\u003cscript\u003econsole.log(\"hello!\");\u003c/script\u003e"
+          },
+          {
+            "type": "boolean",
+            "key": "supportDocumentWrite",
+            "value": "false"
+          }
+        ],
+        "fingerprint": "1543132282249",
+        "firingTriggerId": ["2147479553"],
+        "tagFiringOption": "oncePerEvent"
+      }
+    ],
+    "builtInVariable": [
+      {
+        "accountId": "1234",
+        "containerId": "1234",
+        "type": "pageUrl",
+        "name": "Page URL"
+      },
+      {
+        "accountId": "1234",
+        "containerId": "1234",
+        "type": "pageHostname",
+        "name": "Page Hostname"
+      },
+      {
+        "accountId": "1234",
+        "containerId": "1234",
+        "type": "pagePath",
+        "name": "Page Path"
+      },
+      {
+        "accountId": "1234",
+        "containerId": "1234",
+        "type": "referrer",
+        "name": "Referrer"
+      },
+      {
+        "accountId": "1234",
+        "containerId": "1234",
+        "type": "event",
+        "name": "Event"
+      },
+      {
+        "accountId": "1234",
+        "containerId": "1234",
+        "type": "clickElement",
+        "name": "Click Element"
+      }
+    ],
+    "fingerprint": "1543133330633",
+    "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/1234/containers/1234/versions/3?apiLink=version"
+  }
+}

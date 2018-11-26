@@ -1,0 +1,60 @@
+{
+  "builtInVariable": [
+    {
+      "path": "accounts/1985550951/containers/7841882/workspaces/11/built_in_variables",
+      "accountId": "1985550951",
+      "containerId": "7841882",
+      "workspaceId": "11",
+      "type": "pageHostname",
+      "name": "Page Hostname"
+    },
+    {
+      "path": "accounts/1985550951/containers/7841882/workspaces/11/built_in_variables",
+      "accountId": "1985550951",
+      "containerId": "7841882",
+      "workspaceId": "11",
+      "type": "pagePath",
+      "name": "Page Path"
+    },
+    {
+      "path": "accounts/1985550951/containers/7841882/workspaces/11/built_in_variables",
+      "accountId": "1985550951",
+      "containerId": "7841882",
+      "workspaceId": "11",
+      "type": "referrer",
+      "name": "Referrer"
+    },
+    {
+      "path": "accounts/1985550951/containers/7841882/workspaces/11/built_in_variables",
+      "accountId": "1985550951",
+      "containerId": "7841882",
+      "workspaceId": "11",
+      "type": "clickId",
+      "name": "Click ID"
+    },
+    {
+      "path": "accounts/1985550951/containers/7841882/workspaces/11/built_in_variables",
+      "accountId": "1985550951",
+      "containerId": "7841882",
+      "workspaceId": "11",
+      "type": "clickUrl",
+      "name": "Click URL"
+    },
+    {
+      "path": "accounts/1985550951/containers/7841882/workspaces/11/built_in_variables",
+      "accountId": "1985550951",
+      "containerId": "7841882",
+      "workspaceId": "11",
+      "type": "clickText",
+      "name": "Click Text"
+    },
+    {
+      "path": "accounts/1985550951/containers/7841882/workspaces/11/built_in_variables",
+      "accountId": "1985550951",
+      "containerId": "7841882",
+      "workspaceId": "11",
+      "type": "containerId",
+      "name": "Container ID"
+    }
+  ]
+}

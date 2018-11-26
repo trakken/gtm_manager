@@ -1,0 +1,9 @@
+{
+  "path": "accounts/1234567",
+  "accountId": "1234567",
+  "name": "New Name",
+  "shareData": true,
+  "fingerprint": "1542607518857",
+  "tagManagerUrl": "https://tagmanager.google.com/#/admin/accounts/1234567?apiLink=account"
+ }
+ 

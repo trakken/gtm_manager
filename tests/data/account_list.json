@@ -1,0 +1,14 @@
+{
+  "account": [
+    {
+      "path": "accounts/1234",
+      "accountId": "1234",
+      "name": "Account One"
+    },
+    {
+      "path": "accounts/12345",
+      "accountId": "12345",
+      "name": "Account Two"
+    }
+  ]
+}

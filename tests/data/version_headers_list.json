@@ -1,0 +1,17 @@
+{
+    "containerVersionHeader": [
+     {
+      "path": "accounts/1234/containers/1234/versions/1",
+      "accountId": "1234",
+      "containerId": "1234",
+      "containerVersionId": "1",
+      "name": "Version 1",
+      "numRules": "0",
+      "numTags": "8",
+      "numTriggers": "6",
+      "numVariables": "68",
+      "numZones": "0"
+     }
+    ]
+   }
+   

@@ -1,0 +1,20 @@
+# Build artifacts
+*.py[cod]
+__pycache__
+*.egg-info
+dist
+env
+
+# Documentation-related
+docs/build
+
+# Test files
+.cache/
+.pytest_cache/
+.coverage
+.tox
+htmlcov
+
+
+# VSCode configuration
+.vscode
