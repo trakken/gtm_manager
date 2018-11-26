@@ -1,6 +1,11 @@
 # GTM Manager (WIP)
 
+[![Documentation Status](https://img.shields.io/pypi/v/gtm-manager.svg)](https://pypi.org/project/gtm-manager/)
+[![Documentation Status](https://readthedocs.org/projects/gtm-manager/badge/?version=latest)](https://gtm-manager.readthedocs.io/en/latest/?badge=latest)
+
 An object-oriented helper library wrapping the [Tag Manager API Client Library for Python]("https://developers.google.com/api-client-library/python/apis/tagmanager/v2") for the [Google Tag Manager API]("https://developers.google.com/tag-manager/api/v2/").
+
+[Documentation]("https://gtm-manager.readthedocs.io/en/latest/index.html")
 
 ## Installation from Source
 
