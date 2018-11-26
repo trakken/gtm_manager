@@ -1,5 +1,6 @@
 # GTM Manager (WIP)
 
+[![Build Status](https://travis-ci.org/trakken/gtm_manager.svg?branch=master)](https://travis-ci.org/trakken/gtm_manager)
 [![Documentation Status](https://img.shields.io/pypi/v/gtm-manager.svg)](https://pypi.org/project/gtm-manager/)
 [![Documentation Status](https://readthedocs.org/projects/gtm-manager/badge/?version=latest)](https://gtm-manager.readthedocs.io/en/latest/?badge=latest)
 

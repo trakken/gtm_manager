@@ -1,8 +1,14 @@
 dist: trusty
 language: python
 python: 
-- "3.7"
-cache: pip
+- "3.7-dev"
+- "3.6"
+- "3.5"
+- "pypy3.5"
+cache: 
+  pip: true
+  directories:
+  - .tox
 install:
 - pip install --disable-pip-version-check --upgrade pip setuptools wheel
 - pip install --upgrade tox tox-travis tox-venv
@@ -15,5 +21,7 @@ deploy:
     secure: Elo2e2PlU8cPz0uqSgDEdHrDag5EtN8NKkB74UKZqyWVSjtNiydelBF7nY59n58Ijfzvx7oBpPiVv4utbUS6kjObZ5qUa/va3cA38lhDNnItmGpGKlzH0nvE7ps+6qN0qLjtMgkksJvQ9KN3gUvEifMDMVsJa409WcAPUAYBT2AHG0Vt1ZwXHYeT/nsGVa2IJkc4WBa6+3yWINZ9IQwbmFOiVBO/VIK++K6KBO+KMLOBUs2KnLGtCU5qXHGET6fsoeHjzZySvN01K6mUj0ohHVzNo4TpVsmf0QYxAjae4cs9iEEWqWFyk6UafWsl0cbQvNp0JEb3LhmvCYYEnW66D6Es5mXrYrY4QPzTR7npDbvjr0vNg/ksQaS8tNLcNgOTB3ghIlt5G2EdqDmQL7TXDRnOb8du4Hk994j6qGhrJJwEWb+OALmoCi6fmQA6JYF8rAOiR2RRF3/1qa4Kyp8/AO0xwFWrf6oWiMHC/GsYA9PMsfQdSgVZts9LT+pB+o2aHYRqF5X79jJ0/n3xB+lUdAbktD16en96sKT3Y+xK/HF4GV26jcgxHNKqvjLftRz4fXD7oNmupSrDXI86hlQmjgDygpYtjnImOb6HSfkViEbCyznQn98zSEn+SYY5yCWa8PCOmqB8/sztzBDMIUM9ojzxyZk82dpNzz8sqMWrSBQ=
   on:
     tags: true
+    branch: master
   distributions: "sdist bdist_wheel"
   skip_existing: true
+  repo: trakken/gtm_manager
