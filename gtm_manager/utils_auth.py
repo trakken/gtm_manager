@@ -30,6 +30,12 @@ class LimittedHttp(Http):
         wait_exponential_max=10000,
         retry_on_exception=lambda x: BACKEND_ERROR in str(x),
     )
+    @retry(
+        stop_max_attempt_number=6,
+        wait_exponential_multiplier=10000,
+        wait_exponential_max=100000,
+        retry_on_exception=lambda x: RATE_LIMIT_ERROR in str(x),
+    )
     @sleep_and_retry
     @limits(calls=RATE_LIMIT_CALLS, period=RATE_LIMIT_PERIOD)
     def request(self, *args, **kwargs):

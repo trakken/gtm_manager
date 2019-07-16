@@ -35,8 +35,8 @@ HEADLESS_AUTH = False
 GENERIC_REQUEST_ERROR = "Returned an error response for your request."
 NO_LIVE_VERSION_ERROR = "Published container version not found"
 BACKEND_ERROR = "Backend Error"
-RATE_LIMIT_ERROR = "Rate Limit Exceeded"
+RATE_LIMIT_ERROR = "Quota exceeded for quota group"
 
 DEFAULT_HTTP_TIMEOUT_SEC = 60
-RATE_LIMIT_CALLS = 15
-RATE_LIMIT_PERIOD = 60
+RATE_LIMIT_CALLS = 24
+RATE_LIMIT_PERIOD = 100
