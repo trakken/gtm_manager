@@ -14,5 +14,5 @@ class GTMBase(object):
             self.service = service
         else:
             self.service = discovery.build(
-                SERVICE_NAME, SERVICE_VERSION, http=build_http()
+                SERVICE_NAME, SERVICE_VERSION, http=build_http(), cache_discovery=False
             )
