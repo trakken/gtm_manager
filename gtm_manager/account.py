@@ -95,7 +95,7 @@ class GTMAccount(gtm_manager.base.GTMBase):
         Returns:
             A list of :class:`gtm_manager.permission.GTMContainer`.
         """
-        if refresh or not self._list_containers:
+        if self._list_containers is None or refresh:
             self._refresh_list_containers()
 
         return self._list_containers
@@ -110,7 +110,7 @@ class GTMAccount(gtm_manager.base.GTMBase):
         Returns:
             A list of :class:`gtm_manager.permission.GTMPermission`.
         """
-        if refresh or not self._list_permissions:
+        if self._list_permissions is None or refresh:
             self._refresh_list_permissions()
 
         return self._list_permissions
@@ -168,7 +168,7 @@ class GTMAccount(gtm_manager.base.GTMBase):
         response = request.execute()
         self._list_containers = [
             gtm_manager.container.GTMContainer(container=x, service=self.service)
-            for x in response.get("container", [])
+            for x in response.get("container") or []
         ]
 
     def _refresh_list_permissions(self):
@@ -177,5 +177,5 @@ class GTMAccount(gtm_manager.base.GTMBase):
         response = request.execute()
         self._list_permissions = [
             gtm_manager.permission.GTMPermission(permission=x, service=self.service)
-            for x in response.get("userPermission", [])
+            for x in response.get("userPermission") or []
         ]

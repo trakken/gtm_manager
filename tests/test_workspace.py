@@ -1,4 +1,4 @@
-"""test_workspace.py"""
+# pylint: disable=missing-docstring
 from gtm_manager.workspace import GTMWorkspace
 from gtm_manager.version import GTMVersion
 from gtm_manager.tag import GTMTag
@@ -9,7 +9,6 @@ from gtm_manager.built_in_variable import GTMBuiltInVariable
 
 
 def test_init_workspace(mock_service):
-    """test_init_workspace"""
     service, responses = mock_service("workspace_get.json")
     workspace_get_dict = responses[0]
 
@@ -39,7 +38,6 @@ def test_init_workspace(mock_service):
 
 
 def test_quick_preview(mock_service):
-    """test_quick_preview"""
     service, _ = mock_service("workspace_get.json", "quick_preview_get.json")
 
     workspace = GTMWorkspace(
@@ -54,7 +52,6 @@ def test_quick_preview(mock_service):
 
 
 def test_delete(mock_service):
-    """test_delete"""
     service, _ = mock_service("workspace_get.json", "echo_request_body")
 
     workspace = GTMWorkspace(
@@ -65,7 +62,6 @@ def test_delete(mock_service):
 
 
 def test_clear_all_assets(mock_service):
-    """test_clear_all_assets"""
     service, _ = mock_service(
         "workspace_get.json",
         "quick_preview_get.json",
@@ -84,7 +80,6 @@ def test_clear_all_assets(mock_service):
 
 
 def test_trigger_map(mock_service):
-    """test_trigger_map"""
     service, responses = mock_service("workspace_get.json", "quick_preview_get.json")
     quick_preview_get = responses[1]["containerVersion"]
 
@@ -109,7 +104,6 @@ def test_trigger_map(mock_service):
 
 
 def test_folder_map(mock_service):
-    """test_trigger_map"""
     service, responses = mock_service("workspace_get.json", "quick_preview_get.json")
     quick_preview_get = responses[1]["containerVersion"]
 
@@ -133,7 +127,7 @@ def test_folder_map(mock_service):
 
 
 def test_disable_built_ins(mock_service):
-    """test_disable_built_ins"""
+
     service, _ = mock_service("workspace_get.json", "built_in_variables_get.json")
 
     workspace = GTMWorkspace(
@@ -144,7 +138,6 @@ def test_disable_built_ins(mock_service):
 
 
 def test_create_tag(mock_service):
-    """test_create_tag"""
     service, responses = mock_service("workspace_get.json", "tag_get.json")
     tag_get = responses[1]
 
@@ -172,7 +165,6 @@ def test_create_tag(mock_service):
 
 
 def test_create_trigger(mock_service):
-    """test_create_trigger"""
     service, responses = mock_service("workspace_get.json", "trigger_get.json")
     trigger_get = responses[1]
 
@@ -211,7 +203,6 @@ def test_create_trigger(mock_service):
 
 
 def test_create_variable(mock_service):
-    """test_create_variable"""
     service, responses = mock_service("workspace_get.json", "variable_get.json")
     variable_get = responses[1]
 
@@ -233,7 +224,6 @@ def test_create_variable(mock_service):
 
 
 def test_create_folder(mock_service):
-    """test_create_folder"""
     service, responses = mock_service("workspace_get.json", "folders_get.json")
     folder_get = responses[1]
 
@@ -249,7 +239,6 @@ def test_create_folder(mock_service):
 
 
 def test_create_build_ins(mock_service):
-    """test_create_build_ins"""
     service, responses = mock_service(
         "workspace_get.json", "built_in_variables_get.json"
     )
@@ -269,7 +258,6 @@ def test_create_build_ins(mock_service):
 
 
 def test_list_tags(mock_service):
-    """test_list_tags"""
     service, responses = mock_service("workspace_get.json", "tags_list.json")
     tags_list = responses[1]["tag"]
 
@@ -284,8 +272,20 @@ def test_list_tags(mock_service):
     workspace.list_tags(refresh=False)
 
 
+def test_list_tags_empty(mock_service):
+    service, _ = mock_service("workspace_get.json", "empty.json")
+
+    workspace = GTMWorkspace(
+        path="accounts/1234/containers/1234/workspaces/1", service=service
+    )
+    tags = workspace.list_tags(refresh=True)
+
+    assert tags == []
+
+    workspace.list_tags(refresh=False)
+
+
 def test_list_triggers(mock_service):
-    """test_list_triggers"""
     service, responses = mock_service("workspace_get.json", "triggers_list.json")
     triggers_list = responses[1]["trigger"]
 
@@ -300,8 +300,20 @@ def test_list_triggers(mock_service):
     workspace.list_triggers(refresh=False)
 
 
+def test_list_triggers_empty(mock_service):
+    service, _ = mock_service("workspace_get.json", "empty.json")
+
+    workspace = GTMWorkspace(
+        path="accounts/1234/containers/1234/workspaces/1", service=service
+    )
+    triggers = workspace.list_triggers(refresh=True)
+
+    assert triggers == []
+
+    workspace.list_triggers(refresh=False)
+
+
 def test_list_variables(mock_service):
-    """test_list_variables"""
     service, responses = mock_service("workspace_get.json", "variables_list.json")
     variables_list = responses[1]["variable"]
 
@@ -316,8 +328,20 @@ def test_list_variables(mock_service):
     workspace.list_variables(refresh=False)
 
 
+def test_list_variables_empty(mock_service):
+    service, _ = mock_service("workspace_get.json", "empty.json")
+
+    workspace = GTMWorkspace(
+        path="accounts/1234/containers/1234/workspaces/1", service=service
+    )
+    variables = workspace.list_variables(refresh=True)
+
+    assert variables == []
+
+    workspace.list_variables(refresh=False)
+
+
 def test_list_folder(mock_service):
-    """test_list_folder"""
     service, responses = mock_service("workspace_get.json", "folders_list.json")
     folders_list = responses[1]["folder"]
 
@@ -332,8 +356,20 @@ def test_list_folder(mock_service):
     workspace.list_folders(refresh=False)
 
 
+def test_list_folder_empty(mock_service):
+    service, _ = mock_service("workspace_get.json", "empty.json")
+
+    workspace = GTMWorkspace(
+        path="accounts/1234/containers/1234/workspaces/1", service=service
+    )
+    folders = workspace.list_folders(refresh=True)
+
+    assert folders == []
+
+    workspace.list_folders(refresh=False)
+
+
 def test_list_built_in_variables(mock_service):
-    """test_list_built_in_variables"""
     service, responses = mock_service(
         "workspace_get.json", "built_in_variables_list.json"
     )
@@ -350,11 +386,22 @@ def test_list_built_in_variables(mock_service):
     workspace.list_built_in_variables(refresh=False)
 
 
-def test_get_tag_by_name(mock_service):
-    """test_get_tag_by_name"""
-    service, _ = mock_service(
-        "workspace_get.json", "tags_list.json"
+def test_list_built_in_variables_empty(mock_service):
+    service, _ = mock_service("workspace_get.json", "empty.json")
+
+    workspace = GTMWorkspace(
+        path="accounts/1234/containers/1234/workspaces/1", service=service
     )
+    built_in_variables = workspace.list_built_in_variables(refresh=True)
+
+    assert isinstance(built_in_variables, list)
+    assert built_in_variables == []
+
+    workspace.list_built_in_variables(refresh=False)
+
+
+def test_get_tag_by_name(mock_service):
+    service, _ = mock_service("workspace_get.json", "tags_list.json")
 
     workspace = GTMWorkspace(
         path="accounts/1234/containers/1234/workspaces/1", service=service
@@ -367,10 +414,7 @@ def test_get_tag_by_name(mock_service):
 
 
 def test_get_trigger_by_name(mock_service):
-    """test_get_trigger_by_name"""
-    service, _ = mock_service(
-        "workspace_get.json", "triggers_list.json"
-    )
+    service, _ = mock_service("workspace_get.json", "triggers_list.json")
 
     workspace = GTMWorkspace(
         path="accounts/1234/containers/1234/workspaces/1", service=service
@@ -383,10 +427,7 @@ def test_get_trigger_by_name(mock_service):
 
 
 def test_get_variable_by_name(mock_service):
-    """test_get_variable_by_name"""
-    service, _ = mock_service(
-        "workspace_get.json", "variables_list.json"
-    )
+    service, _ = mock_service("workspace_get.json", "variables_list.json")
 
     workspace = GTMWorkspace(
         path="accounts/1234/containers/1234/workspaces/1", service=service
@@ -399,10 +440,7 @@ def test_get_variable_by_name(mock_service):
 
 
 def test_create_version(mock_service):
-    """test_create_version"""
-    service, _ = mock_service(
-        "workspace_get.json", "version_create.json"
-    )
+    service, _ = mock_service("workspace_get.json", "version_create.json")
 
     workspace = GTMWorkspace(
         path="accounts/1234/containers/1234/workspaces/1", service=service
@@ -414,10 +452,7 @@ def test_create_version(mock_service):
 
 
 def test_get_status(mock_service):
-    """test_get_status"""
-    service, _ = mock_service(
-        "workspace_get.json", "status_get.json"
-    )
+    service, _ = mock_service("workspace_get.json", "status_get.json")
 
     workspace = GTMWorkspace(
         path="accounts/1234/containers/1234/workspaces/1", service=service
@@ -429,10 +464,7 @@ def test_get_status(mock_service):
 
 
 def test_sync(mock_service):
-    """test_get_status"""
-    service, _ = mock_service(
-        "workspace_get.json", "sync_clean.json"
-    )
+    service, _ = mock_service("workspace_get.json", "sync_clean.json")
 
     workspace = GTMWorkspace(
         path="accounts/1234/containers/1234/workspaces/1", service=service

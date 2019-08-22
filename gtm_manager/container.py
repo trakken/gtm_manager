@@ -191,12 +191,12 @@ class GTMContainer(gtm_manager.base.GTMBase):
         Returns:
             A list of :class:`gtm_manager.workspace.GTMWorkspace`.
         """
-        if not self._workspaces or refresh:
+        if self._workspaces is None or refresh:
             request = self.containers_service.workspaces().list(parent=self.path)
             response = request.execute()
             self._workspaces = [
                 gtm_manager.workspace.GTMWorkspace(workspace=x, service=self.service)
-                for x in response.get("workspace", [])
+                for x in response.get("workspace") or []
             ]
         return self._workspaces
 
@@ -210,7 +210,7 @@ class GTMContainer(gtm_manager.base.GTMBase):
         Returns:
             A list of :class:`gtm_manager.version.GTMVersionHeader`.
         """
-        if not self._version_headers or refresh:
+        if self._version_headers is None or refresh:
             request = (
                 self.service.accounts()
                 .containers()
@@ -220,6 +220,6 @@ class GTMContainer(gtm_manager.base.GTMBase):
             response = request.execute()
             self._version_headers = [
                 gtm_manager.version.GTMVersionHeader(versionHeader=x)
-                for x in response.get("containerVersionHeader", [])
+                for x in response.get("containerVersionHeader") or []
             ]
         return self._version_headers

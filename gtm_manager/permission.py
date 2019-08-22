@@ -32,7 +32,7 @@ class GTMPermission(gtm_manager.base.GTMBase):
             raise ValueError("Please pass either a permission obj or permission path.")
 
         self._containerAccess = [
-            GTMContainerAccess(x) for x in permission.get("containerAccess")
+            GTMContainerAccess(x) for x in permission.get("containerAccess") or []
         ]
         self._path = permission.get("path")
         self._accountAccess = permission.get("accountAccess")

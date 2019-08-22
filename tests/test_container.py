@@ -1,11 +1,10 @@
-"""test_container.py"""
+# pylint: disable=missing-docstring
 from gtm_manager.container import GTMContainer
 from gtm_manager.workspace import GTMWorkspace
 from gtm_manager.version import GTMVersionHeader, GTMVersion
 
 
 def test_init_container(mock_service):
-    """test_init_container"""
     service, responses = mock_service("container_get.json")
     container_get_dict = responses[0]
 
@@ -37,7 +36,6 @@ def test_init_container(mock_service):
 
 
 def test_live_version(mock_service):
-    """test_live_version"""
     service, _ = mock_service("container_get.json", "version_get.json")
 
     container = GTMContainer(path="accounts/1234/containers/1234", service=service)
@@ -49,7 +47,6 @@ def test_live_version(mock_service):
 
 
 def test_create_workspace(mock_service):
-    """test_create_workspace"""
     service, _ = mock_service("container_get.json", "workspace_get.json")
 
     container = GTMContainer(path="accounts/1234/containers/1234", service=service)
@@ -61,7 +58,6 @@ def test_create_workspace(mock_service):
 
 
 def test_list_workspaces(mock_service):
-    """test_list_workspaces"""
     service, responses = mock_service("container_get.json", "workspace_list.json")
     workspace_list_dict = responses[1]
 
@@ -74,8 +70,18 @@ def test_list_workspaces(mock_service):
     container.list_workspaces(refresh=False)
 
 
+def test_list_workspaces_empty(mock_service):
+    service, _ = mock_service("container_get.json", "empty.json")
+
+    container = GTMContainer(path="accounts/1234/containers/1234", service=service)
+
+    workspace_list = container.list_workspaces()
+    assert workspace_list == []
+
+    container.list_workspaces(refresh=False)
+
+
 def test_list_version_headers(mock_service):
-    """test_list_version_headers"""
     service, responses = mock_service("container_get.json", "version_headers_list.json")
     version_headers_dict = responses[1]
 
@@ -84,5 +90,16 @@ def test_list_version_headers(mock_service):
     container_list = container.list_version_headers()
     assert len(container_list) == len(version_headers_dict["containerVersionHeader"])
     assert isinstance(container_list[0], GTMVersionHeader)
+
+    container.list_version_headers(refresh=False)
+
+
+def test_list_version_headers_empty(mock_service):
+    service, _ = mock_service("container_get.json", "empty.json")
+
+    container = GTMContainer(path="accounts/1234/containers/1234", service=service)
+
+    container_list = container.list_version_headers()
+    assert container_list == []
 
     container.list_version_headers(refresh=False)
