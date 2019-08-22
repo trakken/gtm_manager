@@ -1,0 +1,18 @@
+{
+  "path": "accounts/123456/user_permissions/123456123456123456",
+  "accountId": "123456",
+  "emailAddress": "user@domain.de",
+  "accountAccess": {
+    "permission": "admin"
+  },
+  "containerAccess": [
+    {
+      "containerId": "123456",
+      "permission": "publish"
+    },
+    {
+      "containerId": "234567",
+      "permission": "publish"
+    }
+  ]
+}

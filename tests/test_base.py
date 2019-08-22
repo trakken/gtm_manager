@@ -1,4 +1,4 @@
-"""test_base.py"""
+# pylint: disable=missing-docstring
 from gtm_manager.base import GTMBase
 
 

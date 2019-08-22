@@ -26,7 +26,7 @@ class GTMManager(gtm_manager.base.GTMBase):
             response = request.execute()
             return [
                 gtm_manager.account.GTMAccount(account=x, service=self.service)
-                for x in response.get("account", [])
+                for x in response.get("account") or []
             ]
         except errors.HttpError as error:
             logging.error(error)

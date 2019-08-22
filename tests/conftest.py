@@ -1,4 +1,4 @@
-"""conftest.py"""
+# pylint: disable=missing-docstring, redefined-outer-name
 import os
 import json
 
@@ -19,8 +19,6 @@ HTTP_MOCK_KEYWORDS = [
 
 @pytest.fixture
 def data_file():
-    """data_file"""
-
     def func(file_name, data_dir="data"):
         if file_name in HTTP_MOCK_KEYWORDS:
             return file_name
@@ -35,8 +33,6 @@ def data_file():
 
 @pytest.fixture
 def mock_service(data_file):
-    """mock_service"""
-
     def func(*args):
         arg_files = [data_file(x) for x in list(args)]
 

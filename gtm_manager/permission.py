@@ -32,7 +32,7 @@ class GTMPermission(gtm_manager.base.GTMBase):
             raise ValueError("Please pass either a permission obj or permission path.")
 
         self._containerAccess = [
-            GTMContainerAccess(x) for x in permission.get("containerAccess")
+            GTMContainerAccess(x) for x in permission.get("containerAccess") or []
         ]
         self._path = permission.get("path")
         self._accountAccess = permission.get("accountAccess")
@@ -46,6 +46,11 @@ class GTMPermission(gtm_manager.base.GTMBase):
     def path(self):
         """str: GTM Permission's API relative path."""
         return self._path
+
+    @property
+    def containerAccess(self):
+        """str: GTM Permission's API relative path."""
+        return self._containerAccess
 
     @property
     def accountAccess(self):

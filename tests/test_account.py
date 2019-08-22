@@ -1,11 +1,10 @@
-"""test_account"""
+# pylint: disable=missing-docstring
 from gtm_manager.account import GTMAccount
 from gtm_manager.container import GTMContainer
 from gtm_manager.permission import GTMPermission
 
 
 def test_init(mock_service):
-    """test_list_accounts"""
     service, responses = mock_service("account_get.json")
     account_get_dict = responses[0]
 
@@ -27,7 +26,6 @@ def test_init(mock_service):
 
 
 def test_list_containers(mock_service):
-    """test_list_containers"""
     service, responses = mock_service("account_get.json", "containers_list.json")
     container_list_dict = responses[1]
 
@@ -40,8 +38,18 @@ def test_list_containers(mock_service):
     account.list_containers(refresh=False)
 
 
+def test_list_containers_empty(mock_service):
+    service, _ = mock_service("account_get.json", "empty.json")
+
+    account = GTMAccount(path="accounts/1234567", service=service)
+
+    container_list = account.list_containers()
+    assert container_list == []
+
+    account.list_containers(refresh=False)
+
+
 def test_list_permissions(mock_service):
-    """test_list_containers"""
     service, responses = mock_service("account_get.json", "permissions_list.json")
     permissions_list_dict = responses[1]
 
@@ -54,8 +62,18 @@ def test_list_permissions(mock_service):
     account.list_permissions(refresh=False)
 
 
+def test_list_permissions_empty(mock_service):
+    service, _ = mock_service("account_get.json", "empty.json")
+
+    account = GTMAccount(path="accounts/1234567", service=service)
+
+    permissions_list = account.list_permissions()
+    assert permissions_list == []
+
+    account.list_permissions(refresh=False)
+
+
 def test_update(mock_service):
-    """test_list_containers"""
     service, repsonses = mock_service("account_get.json", "account_update.json")
     account_update = repsonses[1]
 
@@ -68,7 +86,6 @@ def test_update(mock_service):
 
 
 def test_create_container(mock_service):
-    """test_create_container"""
     service, repsonses = mock_service("account_get.json", "container_get.json")
     container_get = repsonses[1]
 

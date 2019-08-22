@@ -319,7 +319,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
         response = request.execute()
         return [
             gtm_manager.built_in_variable.GTMBuiltInVariable(x)
-            for x in response.get("builtInVariable", [])
+            for x in response.get("builtInVariable") or []
         ]
 
     def list_tags(self, refresh=False):
@@ -332,13 +332,13 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
         Returns:
             A list of :class:`gtm_manager.tag.GTMTag`.
         """
-        if not self._tags or refresh:
+        if self._tags is None or refresh:
             request = self.workspaces_service.tags().list(parent=self.path)
 
             response = request.execute()
             self._tags = [
                 gtm_manager.tag.GTMTag(tag=x, service=self.service, parent=self.path)
-                for x in response.get("tag", [])
+                for x in response.get("tag") or []
             ]
         return self._tags
 
@@ -352,7 +352,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
         Returns:
             A list of :class:`gtm_manager.triggers.GTMTrigger`.
         """
-        if not self._triggers or refresh:
+        if self._triggers is None or refresh:
             request = self.workspaces_service.triggers().list(parent=self.path)
 
             response = request.execute()
@@ -360,7 +360,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
                 gtm_manager.trigger.GTMTrigger(
                     trigger=x, service=self.service, parent=self.path
                 )
-                for x in response.get("trigger", [])
+                for x in response.get("trigger") or []
             ]
         return self._triggers
 
@@ -374,7 +374,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
         Returns:
             A list of :class:`gtm_manager.variable.GTMVariable`.
         """
-        if not self._variables or refresh:
+        if self._variables is None or refresh:
             request = self.workspaces_service.variables().list(parent=self.path)
 
             response = request.execute()
@@ -382,7 +382,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
                 gtm_manager.variable.GTMVariable(
                     variable=x, service=self.service, parent=self.path
                 )
-                for x in response.get("variable", [])
+                for x in response.get("variable") or []
             ]
         return self._variables
 
@@ -397,7 +397,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
             A list of :class:`gtm_manager.folder.GTMFolder`.
         """
 
-        if not self._folders or refresh:
+        if self._folders is None or refresh:
             request = self.workspaces_service.folders().list(parent=self.path)
 
             response = request.execute()
@@ -405,7 +405,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
                 gtm_manager.folder.GTMFolder(
                     folder=x, service=self.service, parent=self.path
                 )
-                for x in response.get("folder", [])
+                for x in response.get("folder") or []
             ]
         return self._folders
 
@@ -420,7 +420,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
             A list of :class:`gtm_manager.built_in_variable.GTMBuiltInVariable`.
         """
 
-        if not self._built_in_variables or refresh:
+        if self._built_in_variables is None or refresh:
             request = self.workspaces_service.built_in_variables().list(
                 parent=self.path
             )
@@ -428,7 +428,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
             response = request.execute()
             self._built_in_variables = [
                 gtm_manager.built_in_variable.GTMBuiltInVariable(built_in_variable=x)
-                for x in response.get("builtInVariable", [])
+                for x in response.get("builtInVariable") or []
             ]
         return self._built_in_variables
 
