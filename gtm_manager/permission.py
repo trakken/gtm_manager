@@ -48,6 +48,11 @@ class GTMPermission(gtm_manager.base.GTMBase):
         return self._path
 
     @property
+    def containerAccess(self):
+        """str: GTM Permission's API relative path."""
+        return self._containerAccess
+
+    @property
     def accountAccess(self):
         """str: GTM Permission's API relative path."""
         return self._accountAccess
