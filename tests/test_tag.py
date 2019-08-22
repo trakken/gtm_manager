@@ -92,7 +92,12 @@ def test_update(mock_service):
     assert len(tag.parameter) == len(tag_get_updated.get("parameter"))
     assert isinstance(tag.parameter[0], GTMParameter)
 
-    assert tag.parameter[1].value == new_paramter["value"]
+    for index, param in enumerate(tag.parameter):
+        if param.key == new_paramter["key"]:
+            new_param_index = index
+            break
+
+    assert tag.parameter[new_param_index].value == new_paramter["value"]
 
 
 def test_delete(mock_service):
