@@ -196,7 +196,7 @@ class GTMContainer(gtm_manager.base.GTMBase):
             response = request.execute()
             self._workspaces = [
                 gtm_manager.workspace.GTMWorkspace(workspace=x, service=self.service)
-                for x in response.get("workspace")
+                for x in response.get("workspace", [])
             ]
         return self._workspaces
 
@@ -220,6 +220,6 @@ class GTMContainer(gtm_manager.base.GTMBase):
             response = request.execute()
             self._version_headers = [
                 gtm_manager.version.GTMVersionHeader(versionHeader=x)
-                for x in response.get("containerVersionHeader")
+                for x in response.get("containerVersionHeader", [])
             ]
         return self._version_headers

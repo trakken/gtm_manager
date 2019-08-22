@@ -168,7 +168,7 @@ class GTMAccount(gtm_manager.base.GTMBase):
         response = request.execute()
         self._list_containers = [
             gtm_manager.container.GTMContainer(container=x, service=self.service)
-            for x in response.get("container")
+            for x in response.get("container", [])
         ]
 
     def _refresh_list_permissions(self):
@@ -177,5 +177,5 @@ class GTMAccount(gtm_manager.base.GTMBase):
         response = request.execute()
         self._list_permissions = [
             gtm_manager.permission.GTMPermission(permission=x, service=self.service)
-            for x in response.get("userPermission")
+            for x in response.get("userPermission", [])
         ]
