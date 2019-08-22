@@ -3,7 +3,7 @@ from gtm_manager.built_in_variable import GTMBuiltInVariable
 
 
 def test_init(mock_service):
-    _, responses = mock_service("built_in_variable_get.json")
+    _, responses = mock_service("built_in_variables_get.json")
     built_in_variable_get = responses[0]
 
     built_in_variable = GTMBuiltInVariable(built_in_variable_get)
