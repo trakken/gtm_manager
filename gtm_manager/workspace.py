@@ -16,8 +16,8 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
         workspace (dict): An API representation of the GTM Workspace. If provided, the
             resource will be not be loaded from the API. `workspace` or `path` argument must be
             set.
-        path (str): The API path to the resource, i.e 
-            "accounts/1234/containers/1234/workspaces/1234". If provided instead of `workspace`, 
+        path (str): The API path to the resource, i.e
+            "accounts/1234/containers/1234/workspaces/1234". If provided instead of `workspace`,
             the representation will be loaded from the API. `path` or `workspace` argument must be
             set.
         **kwargs: Additional keyword args to initialize the base class.
@@ -165,7 +165,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
 
         Returns:
             A dict having all triggerNames and triggerIds as strings keys with their corresponding
-            triggerIds and triggerNames as string values. The *All Pages* trigger will always be 
+            triggerIds and triggerNames as string values. The *All Pages* trigger will always be
             added as default. For example::
 
                 {
@@ -309,7 +309,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
     def create_build_ins(self, asset_body):
         """Create built-ins in the current workspace.
 
-        Args: 
+        Args:
             built_in_type (list of str): A list of the built in types as strings the call should
                 enable.
         """
@@ -338,7 +338,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
             response = request.execute()
             self._tags = [
                 gtm_manager.tag.GTMTag(tag=x, service=self.service, parent=self.path)
-                for x in response.get("tag")
+                for x in response.get("tag", [])
             ]
         return self._tags
 
@@ -360,7 +360,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
                 gtm_manager.trigger.GTMTrigger(
                     trigger=x, service=self.service, parent=self.path
                 )
-                for x in response.get("trigger")
+                for x in response.get("trigger", [])
             ]
         return self._triggers
 
@@ -382,7 +382,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
                 gtm_manager.variable.GTMVariable(
                     variable=x, service=self.service, parent=self.path
                 )
-                for x in response.get("variable")
+                for x in response.get("variable", [])
             ]
         return self._variables
 
@@ -405,7 +405,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
                 gtm_manager.folder.GTMFolder(
                     folder=x, service=self.service, parent=self.path
                 )
-                for x in response.get("folder")
+                for x in response.get("folder", [])
             ]
         return self._folders
 
@@ -428,7 +428,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
             response = request.execute()
             self._built_in_variables = [
                 gtm_manager.built_in_variable.GTMBuiltInVariable(built_in_variable=x)
-                for x in response.get("builtInVariable")
+                for x in response.get("builtInVariable", [])
             ]
         return self._built_in_variables
 
@@ -547,7 +547,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
 
     def get_status(self):
         """Get the status with all workspace changes.
-        
+
         @TODO: Add examples
 
         Returns:
@@ -558,7 +558,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
 
     def sync(self):
         """Synchronize the workspace to the latest GTM Version.
-        
+
         Returns:
             @TODO: What is returned?
         """
