@@ -20,8 +20,8 @@ def test_base_credentials_empty(build_mock, get_credentials_mock):
 
     GTMBase(service=None, credentials=None)
 
-    get_credentials_mock.assert_called()
-    build_mock.assert_called()
+    assert get_credentials_mock.mock_calls
+    assert build_mock.mock_calls
 
 
 @patch("gtm_manager.utils_auth.get_credentials")
@@ -33,4 +33,4 @@ def test_base_credentials_true(build_mock, get_credentials_mock):
     GTMBase(service=None, credentials=True)
 
     get_credentials_mock.assert_not_called()
-    build_mock.assert_called()
+    assert build_mock.mock_calls
