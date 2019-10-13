@@ -91,8 +91,10 @@ def get_credentials():
     return credentials
 
 
-def build_http():
+def build_http(credentials=None):
     """build_http"""
+    if not credentials:
+        credentials = get_credentials()
     return AuthorizedHttp(
-        get_credentials(), http=LimittedHttp(timeout=DEFAULT_HTTP_TIMEOUT_SEC)
+        credentials, http=LimittedHttp(timeout=DEFAULT_HTTP_TIMEOUT_SEC)
     )

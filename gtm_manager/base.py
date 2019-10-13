@@ -9,10 +9,13 @@ from gtm_manager import SERVICE_NAME, SERVICE_VERSION
 class GTMBase(object):
     """GTMBase"""
 
-    def __init__(self, service=None):
+    def __init__(self, service=None, credentials=None):
         if service:
             self.service = service
         else:
             self.service = discovery.build(
-                SERVICE_NAME, SERVICE_VERSION, http=build_http(), cache_discovery=False
+                SERVICE_NAME,
+                SERVICE_VERSION,
+                http=build_http(credentials=credentials),
+                cache_discovery=False,
             )
