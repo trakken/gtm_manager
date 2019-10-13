@@ -18,36 +18,36 @@ class GTMBuiltInVariable(object):
 
     @property
     def path(self):
-        """str: Account display name
+        """str: GTM BuiltInVariable's API relative path.
         """
         return self._path
 
     @property
     def accountId(self):
-        """str: Account display name
+        """str: GTM Account ID.
         """
         return self._accountId
 
     @property
     def containerId(self):
-        """str: Account display name
+        """str: GTM Container ID.
         """
         return self._containerId
 
     @property
     def workspaceId(self):
-        """str: Account display name
+        """str: GTM Workspace ID.
         """
         return self._workspaceId
 
     @property
     def name(self):
-        """str: Account display name
+        """str: Name of the built-in variable to be used to refer to the built-in variable.
         """
         return self._name
 
     @property
     def type(self):
-        """str: Account display name
+        """str: Type of built-in variable.
         """
         return self._type
