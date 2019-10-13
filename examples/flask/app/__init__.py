@@ -6,7 +6,7 @@ from gtm_manager.manager import GTMManager
 
 def create_app():
     app = Flask(__name__)
-    app.config["SECRET_KEY"] = "DEVd"
+    app.config["SECRET_KEY"] = "DEV"
 
     from app.blueprints import auth
 
