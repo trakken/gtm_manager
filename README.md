@@ -25,11 +25,11 @@ pip3 install gtm_manager --find-links $(pwd)/dist/
 Use a Google account to create application credentials, download the JSON file and put it in the same directory as your script with the name `client_secret.json`. During the first execution of any API-dependent library code, you will be prompted to perform the auth flow.
 
 ```python
-from gtm_manager import GTMManager
+from gtm_manager.manager import GTMManager
 
 accounts = GTMManager().list_accounts()
 
-for account in account:
+for account in accounts:
     print(account.name)
 ```
 
