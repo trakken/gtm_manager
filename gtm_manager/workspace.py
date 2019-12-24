@@ -57,49 +57,50 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
 
     @property
     def description(self):
-        """str: Account display name
+        """str: Workspace description.
         """
         return self._description
 
     @property
     def name(self):
-        """str: Account display name
+        """str: Workspace display name.
         """
         return self._name
 
     @property
     def workspaceId(self):
-        """str: Account display name
+        """str: The Workspace ID uniquely identifies the GTM Workspace.
         """
         return self._workspaceId
 
     @property
     def tagManagerUrl(self):
-        """str: Account display name
+        """str: Auto generated link to the tag manager UI
         """
         return self._tagManagerUrl
 
     @property
     def fingerprint(self):
-        """str: Account display name
+        """str: The fingerprint of the GTM Workspace as computed at storage time.
+        This value is recomputed whenever the workspace is modified.
         """
         return self._fingerprint
 
     @property
     def path(self):
-        """str: Account display name
+        """str: GTM Workspace's API relative path.
         """
         return self._path
 
     @property
     def accountId(self):
-        """str: Account display name
+        """str: GTM Account ID.
         """
         return self._accountId
 
     @property
     def containerId(self):
-        """str: Account display name
+        """str: GTM Container ID.
         """
         return self._containerId
 
@@ -224,8 +225,6 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
     def disable_built_ins(self, built_in_type):
         """Disable built-ins in the current workspace.
 
-        Possible values are documented `here <https://developers.google.com/tag-manager/api/v2/reference/accounts/containers/workspaces/built_in_variables/create>`
-
         Args:
             built_in_type (list of str): A list of the built in types as strings the call should
                 disable.
@@ -237,10 +236,9 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
     def create_tag(self, asset_body):
         """Create a tag in the current workspace.
 
-        @TODO: Add writeable fields.
-
         Args:
-            asset_body (dict): An API representation of a GTM Tag.
+            asset_body (dict): An API representation of a GTM Tag. See the API documentation for
+                all writable fields of the asset_body: https://developers.google.com/tag-manager/api/v2/reference/accounts/containers/tags
 
         Returns:
             An instance of :class:`gtm_manager.tag.GTMTag`
@@ -255,10 +253,9 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
     def create_trigger(self, asset_body):
         """Create a trigger in the current workspace.
 
-        @TODO: Add writeable fields.
-
         Args:
-            asset_body (dict): An API representation of a GTM Trigger.
+            asset_body (dict): An API representation of a GTM Trigger. See the API documentation for
+                all writable fields of the asset_body: https://developers.google.com/tag-manager/api/v2/reference/accounts/containers/triggers
 
         Returns:
             An instance of :class:`gtm_manager.trigger.GTMTrigger`
@@ -273,10 +270,9 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
     def create_variable(self, asset_body):
         """Create a variable in the current workspace.
 
-        @TODO: Add writeable fields.
-
         Args:
-            asset_body (dict): An API representation of a GTM Variable.
+            asset_body (dict): An API representation of a GTM Variable. See the API documentation
+                for all writable fields of the asset_body: https://developers.google.com/tag-manager/api/v2/reference/accounts/containers/variables
 
         Returns:
             An instance of :class:`gtm_manager.variable.GTMVariable`
@@ -291,10 +287,9 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
     def create_folder(self, name, notes=""):
         """Create a folder in the current workspace.
 
-        @TODO: Add writeable fields.
-
         Args:
-            asset_body (dict): An API representation of a GTM Folder.
+            asset_body (dict): An API representation of a GTM Folder. See the API documentation for
+                all writable fields of the asset_body: https://developers.google.com/tag-manager/api/v2/reference/accounts/containers/folders
 
         Returns:
             An instance of :class:`gtm_manager.folder.GTMFolder`
@@ -311,7 +306,7 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
 
         Args:
             built_in_type (list of str): A list of the built in types as strings the call should
-                enable.
+                enable. See the API documentation for possibles types: https://developers.google.com/tag-manager/api/v2/reference/accounts/containers/workspaces/built_in_variables
         """
         request = self.workspaces_service.built_in_variables().create(
             parent=self.path, type=asset_body
@@ -563,4 +558,62 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
             @TODO: What is returned?
         """
         request = self.workspaces_service.sync(path=self.path)
-        return request.execute()
+        sync_resp = request.execute()
+
+        mergeConflicts = []
+
+        for conflict in sync_resp["mergeConflict"]:
+
+            if conflict["entityInWorkspace"]["variable"]:
+                conflict["entityInWorkspace"][
+                    "variable"
+                ] = gtm_manager.variable.GTMVariable(
+                    variable=conflict["entityInWorkspace"]["variable"]
+                )
+
+            if conflict["entityInWorkspace"]["trigger"]:
+                conflict["entityInWorkspace"][
+                    "trigger"
+                ] = gtm_manager.trigger.GTMTrigger(
+                    trigger=conflict["entityInWorkspace"]["trigger"]
+                )
+
+            if conflict["entityInWorkspace"]["tag"]:
+                conflict["entityInWorkspace"]["tag"] = gtm_manager.tag.GTMTag(
+                    tag=conflict["entityInWorkspace"]["tag"]
+                )
+
+            if conflict["entityInWorkspace"]["folder"]:
+                conflict["entityInWorkspace"]["folder"] = gtm_manager.folder.GTMFolder(
+                    folder=conflict["entityInWorkspace"]["folder"]
+                )
+
+            if conflict["entityInBaseVersion"]["variable"]:
+                conflict["entityInBaseVersion"][
+                    "variable"
+                ] = gtm_manager.variable.GTMVariable(
+                    variable=conflict["entityInBaseVersion"]["variable"]
+                )
+
+            if conflict["entityInBaseVersion"]["trigger"]:
+                conflict["entityInBaseVersion"][
+                    "trigger"
+                ] = gtm_manager.trigger.GTMTrigger(
+                    trigger=conflict["entityInBaseVersion"]["trigger"]
+                )
+
+            if conflict["entityInBaseVersion"]["tag"]:
+                conflict["entityInBaseVersion"]["tag"] = gtm_manager.tag.GTMTag(
+                    tag=conflict["entityInBaseVersion"]["tag"]
+                )
+
+            if conflict["entityInBaseVersion"]["folder"]:
+                conflict["entityInBaseVersion"][
+                    "folder"
+                ] = gtm_manager.folder.GTMFolder(
+                    folder=conflict["entityInBaseVersion"]["folder"]
+                )
+
+            mergeConflicts.append(conflict)
+
+        sync_resp["mergeConflict"] = mergeConflicts
