@@ -35,9 +35,21 @@ for account in accounts:
 
 ## Authentication
 
-This library currently only supports user-based oauth crendentials. Service accounts can not be used.
+This library currently supports user-based oauth credentials and service accounts.
 
-When using any of the classes from the resources that require loading data from the Google Tag Manager API, the library will look for an existing in OAuth token in the credentials file or prompt the user to authorize which requires a client secret file.
+### Service Key
+
+Get a `JSON` key for a service account from Google Cloud Platform IAM.
+
+The service account must have user permissions for the relevant GTM entities.
+
+Place the key in your working directory, with the name `service_key.json`. Define your own path and filename with:
+
+```python
+gtm_manager.SERVICE_PRIVATE_KEY = "path/to/file/my_secret.json"
+```
+
+An environment with a valid `service_key` file will always attempt authentication as the service account before trying any user or client methods. 
 
 ### Client Secrets
 
