@@ -4,7 +4,6 @@ import json
 from httplib2 import Http
 
 from google.oauth2.credentials import Credentials
-from google.oauth2 import service_account
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google_auth_httplib2 import AuthorizedHttp
 from googleapiclient.errors import HttpError
@@ -58,11 +57,11 @@ def get_credentials():
           credentials = service_account.Credentials.from_service_account_file(
             filename=SERVICE_PRIVATE_KEY, scopes=AUTH_SCOPES
           )
-    except FileNotFoundError:
-        credentials = None
-    except ValueError:
-        credentials = None
-          
+      except FileNotFoundError:
+          credentials = None
+      except ValueError:
+          credentials = None
+            
     try:
         credentials = Credentials.from_authorized_user_file(CREDENTIALS_FILE_NAME)
     except FileNotFoundError:
