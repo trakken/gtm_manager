@@ -58,6 +58,8 @@ def get_credentials():
           credentials = service_account.Credentials.from_service_account_file(
             filename=SERVICE_PRIVATE_KEY, scopes=AUTH_SCOPES
           )
+          if credentials:
+              return credentials
       except FileNotFoundError:
           credentials = None
       except ValueError:
