@@ -8,7 +8,7 @@
 An object-oriented helper library wrapping the [Tag Manager API Client Library for Python](https://developers.google.com/api-client-library/python/apis/tagmanager/v2) for the [Google Tag Manager API](https://developers.google.com/tag-manager/api/v2/).
 
 ```bash
-pip3 install gtm_manager
+pip install git+https://github.com/jamiefd/gtm-service.git
 ```
 
 Documentation: [https://gtm-manager.readthedocs.io](https://gtm-manager.readthedocs.io/en/latest)
@@ -16,8 +16,8 @@ Documentation: [https://gtm-manager.readthedocs.io](https://gtm-manager.readthed
 ## Installation from Source
 
 ```bash
-python3 setup.py sdist
-pip3 install gtm_manager --find-links $(pwd)/dist/
+python setup.py sdist
+pip install gtm_manager --find-links $(pwd)/dist/
 ```
 
 ## Authentication
