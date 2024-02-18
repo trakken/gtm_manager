@@ -1,5 +1,5 @@
 """__init__.py"""
-__version__ = "0.3.0"
+__version__ = "0.3.0.1"
 
 
 class GoogleTagManagerScopes:
@@ -29,6 +29,7 @@ AUTH_SCOPES = [
 SERVICE_NAME = "tagmanager"
 SERVICE_VERSION = "v2"
 CREDENTIALS_FILE_NAME = "_auth_credentials.json"
+SERVICE_PRIVATE_KEY = "service_key.json"
 CLIENT_SECRET_FILE = "client_secret.json"
 HEADLESS_AUTH = False
 

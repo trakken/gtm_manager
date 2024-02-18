@@ -3,6 +3,7 @@ import json
 
 from httplib2 import Http
 
+from google.oauth2 import service_account
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google_auth_httplib2 import AuthorizedHttp
@@ -50,8 +51,20 @@ class LimittedHttp(Http):
 
 def get_credentials():
     """get_credentials"""
-    from . import AUTH_SCOPES, CLIENT_SECRET_FILE, HEADLESS_AUTH, CREDENTIALS_FILE_NAME
-
+    from . import AUTH_SCOPES, CLIENT_SECRET_FILE, SERVICE_PRIVATE_KEY, HEADLESS_AUTH, CREDENTIALS_FILE_NAME
+    
+    if SERVICE_PRIVATE_KEY:
+      try: 
+          credentials = service_account.Credentials.from_service_account_file(
+            filename=SERVICE_PRIVATE_KEY, scopes=AUTH_SCOPES
+          )
+          if credentials:
+              return credentials
+      except FileNotFoundError:
+          credentials = None
+      except ValueError:
+          credentials = None
+            
     try:
         credentials = Credentials.from_authorized_user_file(CREDENTIALS_FILE_NAME)
     except FileNotFoundError:
