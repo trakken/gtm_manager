@@ -15,6 +15,14 @@ class GTMParameter(object):
         if self.list:
             self.list = [GTMParameter(x) for x in self.list]
 
+        self._raw_body = parameter
+
+    @property
+    def raw_body(self):
+        """obj: The raw asset body as returend from the API
+        """
+        return self._raw_body
+
     def __repr__(self):
         return "<GTM Parameter: {}>".format(self.key)
 
