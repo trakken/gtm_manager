@@ -56,6 +56,14 @@ class GTMVariable(gtm_manager.base.GTMBase):
         self._parameter = [
             gtm_manager.parameter.GTMParameter(x) for x in self._parameter
         ]
+        
+        self._raw_body = variable
+
+    @property
+    def raw_body(self):
+        """obj: The raw asset body as returend from the API
+        """
+        return self._raw_body
 
     @property
     def scheduleStartMs(self):
