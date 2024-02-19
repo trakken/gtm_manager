@@ -51,10 +51,17 @@ class GTMWorkspace(gtm_manager.base.GTMBase):
         self._folders = []
         self._built_in_variables = []
         self._quick_preview = None
-
+        self._raw_body = workspace
+        
     def __repr__(self):
         return "<GTM Workspace: {}>".format(self.name)
 
+    @property
+    def raw_body(self):
+        """obj: The raw asset body as returend from the API
+        """
+        return self._raw_body
+        
     @property
     def description(self):
         """str: Account display name
