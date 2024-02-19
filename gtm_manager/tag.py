@@ -65,6 +65,14 @@ class GTMTag(gtm_manager.base.GTMBase):
         self._parameter = [
             gtm_manager.parameter.GTMParameter(x) for x in self._parameter
         ]
+        
+        self._raw_body = tag
+
+    @property
+    def raw_body(self):
+        """obj: The raw asset body as returend from the API
+        """
+        return self._raw_body
 
     @property
     def paused(self):
