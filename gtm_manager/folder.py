@@ -41,7 +41,14 @@ class GTMFolder(gtm_manager.base.GTMBase):
         self._accountId = folder.get("accountId")
         self._name = folder.get("name")
         self._path = path or "{}/folders/{}".format(parent, self.folderId)
+        self._raw_body = folder
 
+    @property
+    def raw_body(self):
+        """obj: The raw asset body as returend from the API
+        """
+        return self._raw_body
+    
     @property
     def containerId(self):
         """str: The container that this version was taken from.
