@@ -3,11 +3,12 @@ import json
 
 from httplib2 import Http
 
-import google.auth
+from google.auth import default
 from google.oauth2 import service_account
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google_auth_httplib2 import AuthorizedHttp
+from google.auth.exceptions import DefaultCredentialsError
 from googleapiclient.errors import HttpError
 
 from ratelimit import limits, sleep_and_retry, RateLimitException
